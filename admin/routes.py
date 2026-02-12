@@ -159,7 +159,7 @@ def payments():
 
 
 @admin_bp.route("/create_admin", methods=["GET", "POST"])
-@role_required("admin")
+# @role_required("admin")
 def create_admin():
     if request.method == "POST":
         name = request.form['name']
@@ -297,3 +297,4 @@ def update_course(id):
     flash("Course updated successfully", "success")
 
     return redirect(url_for("admin.courses"))
+
