@@ -15,6 +15,9 @@ def create_app():
     db.init_app(app)
     jwt.init_app(app)
 
+    with app.app_context():
+        db.create_all()
+
     @app.context_processor
     def inject_user():
         from flask_jwt_extended import verify_jwt_in_request, get_jwt
@@ -63,3 +66,4 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+
